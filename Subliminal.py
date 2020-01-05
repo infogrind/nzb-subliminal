@@ -359,6 +359,7 @@
 ##############################################################################
 
 import re
+import pkg_resources
 from os import sep as os_sep
 from os.path import join
 import errno
@@ -402,6 +403,7 @@ from subliminal import MutexLock
 from subliminal import cache_region
 from subliminal import scan_video
 from subliminal import download_best_subtitles
+from subliminal import print_entry_points
 from subliminal.subtitle import detect
 import babelfish
 
@@ -2191,6 +2193,8 @@ class SubliminalScript(SABPostProcessScript, PostProcessScript,
             )
             return None
 
+
+print_entry_points()
 
 # Call your script as follows:
 if __name__ == "__main__":

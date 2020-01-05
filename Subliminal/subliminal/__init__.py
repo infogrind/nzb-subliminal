@@ -6,7 +6,7 @@ __license__ = 'MIT'
 __copyright__ = 'Copyright 2013 Antoine Bertin'
 
 import logging
-from .api import PROVIDERS_ENTRY_POINT, list_subtitles, download_subtitles, download_best_subtitles
+from .api import PROVIDERS_ENTRY_POINT, list_subtitles, download_subtitles, download_best_subtitles, print_entry_points
 from .cache import MutexLock, region as cache_region
 from .exceptions import Error, ProviderError, ProviderConfigurationError, ProviderNotAvailable, InvalidSubtitle
 from .subtitle import Subtitle

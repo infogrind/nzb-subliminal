@@ -17,6 +17,12 @@ logger = logging.getLogger(__name__)
 PROVIDERS_ENTRY_POINT = 'subliminal.providers'
 
 
+def print_entry_points():
+    print "Printing provider entry points:"
+    for provider_entry_point in pkg_resources.iter_entry_points(PROVIDERS_ENTRY_POINT):
+        print provider_entry_point.name
+
+
 def list_subtitles(videos, languages, providers=None, provider_configs=None):
     """List subtitles for `videos` with the given `languages` using the specified `providers`
 
@@ -40,7 +46,13 @@ def list_subtitles(videos, languages, providers=None, provider_configs=None):
         logger.info('No video to download subtitles for with languages %r', languages)
         return subtitles
     subtitle_languages = set.intersection(*[v.subtitle_languages for v in videos])
-    for provider_entry_point in pkg_resources.iter_entry_points(PROVIDERS_ENTRY_POINT):
+
+    provider_entry_points = pkg_resources.iter_entry_points(PROVIDERS_ENTRY_POINT)
+    print "Provider entry points list (from list_subtitles()):"
+    for provider_entry_point in provider_entry_points:
+        print "- " + provider_entry_points.name
+
+    for provider_entry_point in provider_entry_points:
         # filter and initialize provider
         if providers is not None and provider_entry_point.name not in providers:
             logger.debug('Skipping provider %r: not in the list', provider_entry_point.name)
