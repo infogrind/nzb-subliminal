@@ -359,7 +359,6 @@
 ##############################################################################
 
 import re
-import pkg_resources
 from os import sep as os_sep
 from os.path import join
 import errno
